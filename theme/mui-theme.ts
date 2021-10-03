@@ -26,7 +26,6 @@ const MuiTheme = createTheme({
       primary: "#454F5B",
       secondary: "#9e9e9e",
       disabled: "#919EAB",
-      hint: "rgba(0, 0, 0, 0.38)",
     },
   },
   shadows: [
