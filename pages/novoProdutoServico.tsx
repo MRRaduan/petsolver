@@ -13,7 +13,7 @@ import {
 } from "@mui/material";
 
 import Layout from "../components/Layout";
-import { useCreatePS } from "../api/ProdutoServico";
+import { useCreatePS } from "../endpoints/ProdutoServico";
 
 import { useForm } from "react-hook-form";
 

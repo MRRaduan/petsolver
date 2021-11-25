@@ -15,7 +15,7 @@ import {
 } from "@mui/material";
 
 import { useForm } from "react-hook-form";
-import { useAddUser } from "../api/User";
+import { useAddUser } from "../endpoints/User";
 
 const Cadastro: NextPage = () => {
   const [alignment, setAlignment] = React.useState("sou prestador");

@@ -19,9 +19,9 @@ import {
 
 import Layout from "../components/Layout";
 import { useQuery } from "react-query";
-import PetSolverClient from "../api";
+import PetSolverClient from "../endpoints";
 import { ProdutoServico } from "../interfaces";
-import { useDeletePS } from "../api/ProdutoServico";
+import { useDeletePS } from "../endpoints/ProdutoServico";
 import { currencyFormat } from "../utils";
 
 const Timeline: NextPage = () => {

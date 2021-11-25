@@ -18,11 +18,11 @@ import {
 } from "@mui/material";
 import GoogleIcon from "@mui/icons-material/Google";
 import FavoriteBorderRoundedIcon from "@mui/icons-material/FavoriteBorderRounded";
-import { useGetAllUsers, useDeleteUser } from "../api/User";
+import { useGetAllUsers, useDeleteUser } from "../endpoints/User";
 
 import Layout from "../components/Layout";
 import { useQuery } from "react-query";
-import PetSolverClient from "../api";
+import PetSolverClient from "../endpoints";
 import { User } from "../interfaces";
 
 const Timeline: NextPage = () => {
