@@ -1,0 +1,11 @@
+[
+    {
+        "_id": "619eee6665aec7000806806a",
+        "nome": "Coleira",
+        "descricao": "Coleira para cachorro e gato",
+        "tipo": "produto",
+        "preco": 10,
+        "qtd": 1,
+        "__v": 0
+    }
+]

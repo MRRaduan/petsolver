@@ -1,12 +1,11 @@
 import React from "react";
 import Link from "next/link";
-import { ThemeProvider } from "@mui/material/styles";
-import MuiTheme from "../../theme/mui-theme";
 import Image from "next/image";
 import ModeEditOutlineRoundedIcon from "@mui/icons-material/ModeEditOutlineRounded";
 import PeopleRoundedIcon from "@mui/icons-material/PeopleRounded";
 import ShoppingCartRoundedIcon from "@mui/icons-material/ShoppingCartRounded";
 import AllOutRoundedIcon from "@mui/icons-material/AllOutRounded";
+import ConnectWithoutContactIcon from "@mui/icons-material/ConnectWithoutContact";
 import TimelineRoundedIcon from "@mui/icons-material/TimelineRounded";
 
 import {
@@ -23,7 +22,9 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
+  LinearProgress,
 } from "@mui/material";
+import { useIsFetching } from "react-query";
 
 const drawerWidth = 240;
 
@@ -35,19 +36,24 @@ type MenuItem = {
 
 const menuItems: MenuItem[] = [
   {
-    title: "criar / editar perfil",
-    path: "/",
-    icon: <ModeEditOutlineRoundedIcon />,
-  },
-  {
-    title: "amigos",
-    path: "/",
+    title: "usuários",
+    path: "/users",
     icon: <PeopleRoundedIcon />,
   },
   {
-    title: "oferecer produto",
-    path: "/",
+    title: "oferecer produto/servico",
+    path: "/novoProdutoServico",
     icon: <ShoppingCartRoundedIcon />,
+  },
+  {
+    title: "produtos",
+    path: "/produtos",
+    icon: <ShoppingCartRoundedIcon />,
+  },
+  {
+    title: "servicos",
+    path: "/servicos",
+    icon: <ConnectWithoutContactIcon />,
   },
   {
     title: "avaliações",
@@ -67,8 +73,15 @@ const menuItems: MenuItem[] = [
 ];
 
 const Layout: React.FC = ({ children }) => {
+  const isFetching = useIsFetching();
   return (
-    <ThemeProvider theme={MuiTheme}>
+    <>
+      {isFetching ? (
+        <LinearProgress
+          color="secondary"
+          sx={{ zIndex: (theme) => theme.zIndex.drawer + 2 }}
+        />
+      ) : null}
       <AppBar
         position="fixed"
         sx={{ zIndex: (theme) => theme.zIndex.drawer + 1, pl: 2 }}
@@ -118,7 +131,7 @@ const Layout: React.FC = ({ children }) => {
               />
             </Paper>
             <Typography textAlign="center" variant="body1" sx={{ mb: -0.5 }}>
-              Fulano de Tal
+              Seja bem vindo
             </Typography>
             <Typography textAlign="center" variant="subtitle2">
               prestador
@@ -144,6 +157,7 @@ const Layout: React.FC = ({ children }) => {
       <Box
         component="main"
         sx={{
+          ml: "240px",
           flexGrow: 1,
           p: 3,
           pt: 6,
@@ -153,7 +167,7 @@ const Layout: React.FC = ({ children }) => {
       >
         <Container fixed>{children}</Container>
       </Box>
-    </ThemeProvider>
+    </>
   );
 };
 

@@ -1,0 +1,44 @@
+[
+    {
+        "_id": "619696484eed12000978042f",
+        "nome": "Higor Cuogo",
+        "idade": 22,
+        "dataNascimento": "29/04/1999",
+        "endereco": "Av Ernesto Loretto, 78",
+        "bairro": "Jardim Bela Vista",
+        "complemento": "Casa",
+        "cidade": "São Paulo",
+        "estado": "SP",
+        "email": "higor_teste@hotmail.com",
+        "senha": "12345678",
+        "__v": 0
+    },
+    {
+        "_id": "619c1cdcff08c60008686082",
+        "nome": "teste",
+        "idade": 30,
+        "email": "teste@emal.com",
+        "cidade": "teste",
+        "estado": "teste",
+        "bairro": "teste",
+        "complemento": "teste",
+        "endereco": "teste",
+        "senha": "teste",
+        "dataNascimento": "2000-02-02",
+        "__v": 0
+    },
+    {
+        "_id": "619c1d54ff08c60008686083",
+        "nome": "Higorr Mazzola",
+        "idade": 22,
+        "dataNascimento": "29/04/1999",
+        "endereco": "Av Ernesto Loretto, 78",
+        "bairro": "Jardim Bela Vista",
+        "complemento": "Casa",
+        "cidade": "Ribeirão Preto",
+        "estado": "SP",
+        "email": "higor_teste@hotmail.com",
+        "senha": "12345678",
+        "__v": 0
+    }
+]

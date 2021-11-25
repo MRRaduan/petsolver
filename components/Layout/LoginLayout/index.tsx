@@ -1,12 +1,22 @@
 import React from "react";
-import { ThemeProvider } from "@mui/material/styles";
-import MuiTheme from "../../../theme/mui-theme";
 
-import { AppBar, Box, Toolbar, Container } from "@mui/material";
+import { AppBar, Box, Toolbar, Container, LinearProgress } from "@mui/material";
+import { useIsFetching } from "react-query";
 
 const LoginLayout: React.FC = ({ children }) => {
+  const isFetching = useIsFetching();
+  React.useEffect(() => {
+    console.log(isFetching);
+  });
   return (
-    <ThemeProvider theme={MuiTheme}>
+    <>
+      {isFetching ? (
+        <LinearProgress
+          color="secondary"
+          sx={{ zIndex: (theme) => theme.zIndex.drawer + 2 }}
+        />
+      ) : null}
+
       <AppBar
         position="fixed"
         sx={{ zIndex: (theme) => theme.zIndex.drawer + 1, pl: 2 }}
@@ -26,10 +36,16 @@ const LoginLayout: React.FC = ({ children }) => {
           </svg>
         </Toolbar>
       </AppBar>
-      <Box sx={{ backgroundColor: "primary.main" }}>
+      <Box
+        sx={{
+          backgroundColor: "primary.secondary",
+          height: "100vh",
+          mt: "52px",
+        }}
+      >
         <Container fixed>{children}</Container>
       </Box>
-    </ThemeProvider>
+    </>
   );
 };
 

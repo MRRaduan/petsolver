@@ -1,0 +1,14 @@
+{
+    "_id": "619c1d54ff08c60008686083",
+    "nome": "Higorr Mazzola",
+    "idade": 22,
+    "dataNascimento": "29/04/1999",
+    "endereco": "Av Ernesto Loretto, 78",
+    "bairro": "Jardim Bela Vista",
+    "complemento": "Casa",
+    "cidade": "Ribeirão Preto",
+    "estado": "SP",
+    "email": "higor_teste@hotmail.com",
+    "senha": "12345678",
+    "__v": 0
+}

@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import type { NextPage } from "next";
-import Link from "next/link";
 import Head from "next/head";
-import Layout from "../components/Layout";
+import Link from "next/link";
+import LoginLayout from "../components/Layout/LoginLayout";
+
 import {
   Grid,
   Box,
@@ -12,15 +13,17 @@ import {
   ToggleButtonGroup,
   Typography,
 } from "@mui/material";
-import DateAdapter from "@mui/lab/AdapterDayjs";
-import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
-import LocalizationProvider from "@mui/lab/LocalizationProvider";
-import DatePicker from "@mui/lab/DatePicker";
+
+import { useForm } from "react-hook-form";
+import { useAddUser } from "../api/User";
 
 const Cadastro: NextPage = () => {
   const [alignment, setAlignment] = React.useState("sou prestador");
-
   const [dateValue, setDateValue] = React.useState<Date | null>(null);
+
+  const { register, handleSubmit } = useForm();
+
+  const addUser = useAddUser();
 
   const handleChange = (
     event: React.MouseEvent<HTMLElement>,
@@ -28,8 +31,11 @@ const Cadastro: NextPage = () => {
   ) => {
     setAlignment(newAlignment);
   };
+
+  const handleOnSubmitForm = (data: any) => addUser.mutate(data);
+
   return (
-    <Layout>
+    <LoginLayout>
       <Head>
         <title>Cadastro</title>
         <meta name="description" content="Cadastro de conta petSolver" />
@@ -41,7 +47,7 @@ const Cadastro: NextPage = () => {
         justifyContent="center"
         alignItems="center"
       >
-        <form>
+        <form onSubmit={handleSubmit((data) => handleOnSubmitForm(data))}>
           <Grid container spacing={2} sx={{ mt: 3 }}>
             <Grid item xs={12}>
               <Typography display="block" variant="h2">
@@ -59,47 +65,100 @@ const Cadastro: NextPage = () => {
                 <ToggleButton value="android">sou dono de pet</ToggleButton>
               </ToggleButtonGroup>
             </Grid>
-            <Grid item xs={12}>
-              <TextField variant="outlined" fullWidth label="Nome completo" />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField variant="outlined" fullWidth label="Cidade" />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField variant="outlined" fullWidth label="Estado" />
-            </Grid>
-            <Grid item xs={12}>
-              <LocalizationProvider dateAdapter={DateAdapter}>
-                <DatePicker
-                  label="Basic example"
-                  value={dateValue}
-                  onChange={(newValue) => {
-                    setDateValue(newValue);
-                  }}
-                  renderInput={(params) => <TextField {...params} />}
-                />
-              </LocalizationProvider>
-              <Button
+            <Grid item xs={10}>
+              <TextField
+                {...register("nome", { required: true })}
                 variant="outlined"
-                color="primary"
-                size="small"
-                sx={{ ml: 2 }}
-                endIcon={<AccountCircleRoundedIcon />}
-              >
-                upload foto de perfil
-              </Button>
+                fullWidth
+                label="Nome completo"
+              />
+            </Grid>
+            <Grid item xs={2}>
+              <TextField
+                {...register("idade", { required: true })}
+                variant="outlined"
+                fullWidth
+                label="Idade"
+              />
             </Grid>
             <Grid item xs={12}>
-              <Link href="/timeline">
-                <Button variant="contained" color="primary">
-                  criar conta
-                </Button>
-              </Link>
+              <TextField
+                type="email"
+                {...register("email", { required: true })}
+                variant="outlined"
+                fullWidth
+                label="Email"
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <TextField
+                {...register("cidade")}
+                variant="outlined"
+                fullWidth
+                label="Cidade"
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <TextField
+                {...register("estado", { required: true })}
+                variant="outlined"
+                fullWidth
+                label="Estado"
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <TextField
+                {...register("bairro", { required: true })}
+                variant="outlined"
+                fullWidth
+                label="Bairro"
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <TextField
+                {...register("complemento")}
+                variant="outlined"
+                fullWidth
+                label="Complemento"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                {...register("endereco", { required: true })}
+                variant="outlined"
+                fullWidth
+                label="Endereço"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                {...register("senha", { required: true })}
+                variant="outlined"
+                fullWidth
+                type="password"
+                label="Senha"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                {...register("dataNascimento", { required: true })}
+                variant="outlined"
+                type="date"
+                fullWidth
+                label="Data de Nascimento"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              {/* <Link href="/timeline"> */}
+              <Button variant="contained" color="primary" type="submit">
+                criar conta
+              </Button>
+              {/* </Link> */}
             </Grid>
           </Grid>
         </form>
       </Box>
-    </Layout>
+    </LoginLayout>
   );
 };
 

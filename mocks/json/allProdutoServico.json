@@ -1,0 +1,20 @@
+[
+    {
+        "_id": "6196b0d707e3ca000868e15c",
+        "nome": "Lavagem pet",
+        "descricao": "Lavo cachorro e gato",
+        "tipo": "servico",
+        "preco": 50,
+        "qtd": 1,
+        "__v": 0
+    },
+    {
+        "_id": "6196b14107e3ca000868e15d",
+        "nome": "Coleira",
+        "descricao": "Coleira para cachorro e gato",
+        "tipo": "produto",
+        "preco": 10,
+        "qtd": 1,
+        "__v": 0
+    }
+]
